@@ -1,0 +1,26 @@
+server:
+  port: 56010
+
+spring:
+  application:
+    name: service1
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 #配置中心
+        file-extension: yaml #    配置文件的扩展名 dataid 的名称就是application的name加file-extension   service1.yaml
+        namespace: 06e5e761-9409-4f28-af65-1cc497aa3026 #开发环境对应的Namespace  指定具体的Namespace
+        group: TEST_GROUP  #测试组
+
+# 扩展
+        ext-config[0]:
+          data-id: ext-config-common01.properties
+
+        ext-config[1]:
+          data-id: ext-config-common02.properties
+          group: GLOBALE_GROPU
+
+        ext-config[2]:
+          data-id: ext-config-common03.properties
+          group: PEFRESH_GROUP
+          refresh: true
